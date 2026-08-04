@@ -134,6 +134,14 @@ nav {
   transition: all var(--tr);
 }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+/* Footer also uses a <nav> tag for its links — reset it back to normal
+   static footer layout so it doesn't inherit the header's position:fixed */
+.footer-nav {
+  position: static; top: auto; left: auto; right: auto; z-index: auto;
+  height: auto; padding: 0; background: none; backdrop-filter: none;
+  border-bottom: none;
+}
 .nav-links a {
   font-size: 12.5px; font-weight: 500; letter-spacing: 0.13em;
   text-transform: uppercase; color: var(--text2);
@@ -314,9 +322,10 @@ body.admin-mode .mobile-nav { top: 97px; }
 .about-wrap { position: relative; }
 .about-grid {
   display: grid; grid-template-columns: 55% 45%;
-  gap: 3rem; align-items: start;
+  gap: 3rem; align-items: start; min-width: 0;
 }
-.about-text p { font-size: 17px; line-height: 1.95; color: var(--text2); margin-bottom: 1.3rem; text-align: justify; }
+.about-text { min-width: 0; }
+.about-text p { font-size: 17px; line-height: 1.95; color: var(--text2); margin-bottom: 1.3rem; text-align: justify; overflow-wrap: break-word; word-break: break-word; }
 .about-img-col {
   position: absolute; top: 6px; right: 0; width: 45%;
   display: flex; flex-direction: column; align-items: flex-end;
@@ -342,8 +351,7 @@ body.admin-mode .mobile-nav { top: 97px; }
 }
 
 /* Tab buttons — blue rounded */
-.about-tabs { display: flex; gap: 0.45rem; flex-wrap: nowrap; margin-top: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-.about-tabs::-webkit-scrollbar { display: none; }
+.about-tabs { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 2rem; }
 .tab-btn {
   padding: 9px 16px; font-family: 'Times New Roman', Times, serif;
   font-size: 15px; font-weight: 400; white-space: nowrap; flex-shrink: 0;
