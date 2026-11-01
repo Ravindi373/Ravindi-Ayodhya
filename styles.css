@@ -520,6 +520,9 @@ body.admin-mode .add-cert-btn { display: inline-flex; align-items: center; gap: 
 .exp-company { font-size: 15px; color: var(--accent); margin-bottom: 0.12rem; }
 .exp-meta { font-size: 13px; color: var(--text3); }
 .exp-desc { font-size: 14.5px; color: var(--text2); line-height: 1.7; margin: 0.55rem 0 0; text-align: left; }
+.exp-desc-list { font-size: 14.5px; color: var(--text2); line-height: 1.7; margin: 0.55rem 0 0; padding-left: 1.2rem; text-align: left; }
+.exp-desc-list li { margin-bottom: 0.3rem; }
+.exp-desc-list li:last-child { margin-bottom: 0; }
 .add-exp-btn { display: none; background: none; border: 1px dashed var(--border); color: var(--text3); padding: 6px 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; margin-left: 44px; margin-top: 0.4rem; transition: all var(--tr); border-radius: 6px; }
 body.admin-mode .add-exp-btn { display: block; }
 .add-exp-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -529,6 +532,15 @@ body.admin-mode .add-exp-btn { display: block; }
 =========================== */
 #portfolio { min-height: 100vh; padding: 90px 0 60px; background: var(--bg); position: relative; }
 .port-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.4rem; }
+/* Projects are listed one under another. In each card: description, then skills, then Read more (no divider line) */
+.port-grid { display: flex; flex-direction: column; gap: 1.4rem; }
+.port-grid .port-card .port-card-hd { padding: 1.6rem 1.8rem 0; border-bottom: none; }
+.port-grid .port-card .port-body { padding: 1.1rem 1.8rem 0.9rem; }
+.port-grid .port-card .port-body .port-pills { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .port-grid .port-card .port-card-hd { padding: 1.3rem 1.4rem 0; }
+  .port-grid .port-card .port-body { padding: 0.9rem 1.4rem 0.9rem; }
+}
 .port-card { background: var(--card); border: 1px solid var(--border); transition: all var(--tr); border-radius: var(--radius); overflow: hidden; }
 .port-card:hover { background: var(--card-h); transform: translateY(-4px); box-shadow: var(--shadow); }
 .port-card-hd { padding: 1.3rem 1.4rem 0.9rem; border-bottom: 1px solid var(--border); }
@@ -561,6 +573,7 @@ body.admin-mode .add-proj-btn { display: block; }
 .blog-excerpt { font-size: 15px; color: var(--text2); line-height: 1.4; text-align: justify; margin-bottom: 1rem; }
 .blog-read { font-size: 13px; color: var(--accent); font-family: 'DM Sans', sans-serif; letter-spacing: 0.05em; }
 .blog-read:hover { text-decoration: underline; }
+.more-blogs-wrap { text-align: center; margin-top: 2rem; }
 .add-blog-btn { display: none; width: 100%; padding: 11px; background: none; border: 1px dashed var(--border); color: var(--text3); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; margin-top: 1rem; transition: all var(--tr); border-radius: var(--radius); }
 body.admin-mode .add-blog-btn { display: block; }
 .add-blog-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -633,6 +646,7 @@ body.admin-mode .add-blog-btn { display: block; }
 @media (max-width: 640px) {
   .info-pill { flex-direction: column; text-align: center; }
   .info-pill-left { align-items: center; }
+  .info-pill-badge { align-self: center; }
   .info-clock-info { text-align: center; }
   .info-clock-time { justify-content: center; }
   .info-clock-card { flex-direction: column; }

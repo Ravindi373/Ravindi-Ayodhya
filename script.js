@@ -913,6 +913,26 @@ function _dataopsEscHandler(e) {
   if (e.key === 'Escape') closeDataopsModal(null, true);
 }
 
+/* ===== RETAILLAKE PROJECT MODAL ===== */
+function openRetaillakeModal() {
+  const modal = document.getElementById('retaillakeModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', _retaillakeEscHandler);
+}
+
+function closeRetaillakeModal(event, force) {
+  if (!force && event && event.target !== document.getElementById('retaillakeModal')) return;
+  const modal = document.getElementById('retaillakeModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', _retaillakeEscHandler);
+}
+
+function _retaillakeEscHandler(e) {
+  if (e.key === 'Escape') closeRetaillakeModal(null, true);
+}
+
 /* ===== HOME PHOTO CIRCLE — match height of name-to-social-icons block ===== */
 function syncHomeImgSize() {
   const content = document.querySelector('.home-content');
